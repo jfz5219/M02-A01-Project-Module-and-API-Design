@@ -1,4 +1,4 @@
-package GuestCount;
+package ParkStatistics;
 
 import javax.swing.JFrame;
 
@@ -15,6 +15,7 @@ public class ViewTotalCount {
         /*
         *Implement class 
         */
+        return "placeholder";
     }
    
     public static void main(String[] args) {
