@@ -15,7 +15,8 @@ public class ViewTotalCount {
         /*
         *Implement class 
         */
-        return "placeholder";
+        String totalCount = "50";
+        return totalCount;
     }
    
     public static void main(String[] args) {
