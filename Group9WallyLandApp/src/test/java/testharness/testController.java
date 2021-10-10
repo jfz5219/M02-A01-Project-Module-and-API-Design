@@ -1,10 +1,8 @@
 
 package testharness;
+package RealTimeInfo;
 
-/**
- *
- * @author Evan
- */
+
 public class testController {
     
 }
