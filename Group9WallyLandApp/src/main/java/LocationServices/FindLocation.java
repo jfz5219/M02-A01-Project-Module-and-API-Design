@@ -13,12 +13,20 @@ public class FindLocation {
      * @return returns string location, translated from longitude and latitude coordinates
      */
     public String getLocation(double Longitude, double latitude) {
+        String location = "Longitude + Latitude"; 
         
+       if (Longitude > 15) {
+           location = "WallyLand section 1";
+       } else if (latitude < 10) {
+           location = "WallyLand section 2";
+       } else {
+           location = "not currently in park";
+       }
         /*
         TODO: 
         Implement geo-coordinates transaltion 
         */
-        String location = "Longitude + Latitude"; 
+        
         return location;
         
     }
@@ -35,10 +43,8 @@ public class FindLocation {
        /*
         TODO: 
         Implement applying elements to map frame. 
-        mapFrame.add(currentLocation);
-        mapFrame.add(attractionNames);
         */
-        
+       
         
         return mapFrame;
     }

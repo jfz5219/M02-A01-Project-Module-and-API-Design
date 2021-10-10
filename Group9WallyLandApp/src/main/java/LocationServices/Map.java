@@ -21,6 +21,17 @@ public class Map extends Attractions {
         Implement settting functionality 
         Define Icon object 
         */
+        title = "WallyLand";
+        subSections.add("Section1");
+        subSections.add("Section2");
+        subSections.add("Section3");
+        attractionNames.add("Space Mountain");
+        attractionNames.add("Pirates of the Carribean");
+        attractionNames.add("Micky Mouse Clubhouse");
+        Object icon1 = "icon1"; 
+        Object icon2 = "icon2";
+        attractionIcons.add(icon1);
+        attractionIcons.add(icon2);
          
     }
     

@@ -11,21 +11,17 @@ public class Attractions {
      * @return Returns a string taken from the ArrayList to display the attraction name 
      */
     public String getAttractions(ArrayList<String> attractionList) {
-        
+        String attraction = null;
         attractionList.add("Needs");
         attractionList.add("to");
         attractionList.add("be");
         attractionList.add("implemented");
         for (int i=0; i > attractionList.size(); i++) {
-            String attraction = attractionList.get(i);
+             attraction = attractionList.get(i);
         }
         
-        return "Placeholder since I forget java";
+        return attraction;
     }
-    
-    
-    public static void main(String[] args) {
-        
-    }
+
     
 }

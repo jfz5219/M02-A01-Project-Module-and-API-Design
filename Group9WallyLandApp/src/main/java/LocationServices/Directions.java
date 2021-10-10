@@ -14,8 +14,14 @@ public class Directions extends FindLocation {
      * @param userLocation
      * @return 
      */
-    public ArrayList<String> getDirections(double userLocation) {
-        
+    public ArrayList<String> getDirections(double userLat, double userLong) {
+       String userLocation = getLocation(userLat, userLong);
+       ArrayList<String> area1Directions = new ArrayList<>();
+        ArrayList<String> parkDirections = new ArrayList<>();
+        if (userLocation != "Park area 1") {
+            return area1Directions;
+        }
+        return parkDirections;
     }
     
 }
