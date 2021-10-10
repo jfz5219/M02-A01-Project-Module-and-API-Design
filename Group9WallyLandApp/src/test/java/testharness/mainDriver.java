@@ -1,16 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testharness;
+import java.util.Comparator;
+import org.junit.Assert;
+import org.junit.Test;
 
-/**
- *
- * @author Evan
- */
 public class mainDriver {
     
+    @Test
+    public void testGetAttraction() {
+        Comparator<String> c = String::compareTo;
+        
+    }
+    
+    
+    
+    /**
+     * This main method is the main driver for our program 
+     * @param args 
+     */
     public static void main(String[] args) {
         
     }
