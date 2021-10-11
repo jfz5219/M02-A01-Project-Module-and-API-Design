@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ParkQueues;
+package EmployeePortal;
 
 /**
  *
@@ -40,22 +40,42 @@ public class UpdateQueueCntl {
      * Gets current total and uses the restaurant's capacity that's stored in 
      * our database to calculate the waiting time.
      * @param count the current number of people waiting in line (updated by staff).
+     * @return restaurant's wait time
      */   
-    public void calculateRestaurantTime(int count) {
+    public int calculateRestaurantTime(int count) {
         int capacity = getRestaurantLimit();
         count = 0;
+        
+        return 0;
     } // end calculateRideTime()
 
     /**
      * Gets current total and uses the ride's capacity that's stored in 
      * our database to calculate the waiting time.
      * @param count the current number of people waiting in line (updated by staff).
+     * @return ride's wait time
      */   
-    public void calculateRideTime(int count) {
+    public int calculateRideTime(int count) {
         int capacity = getRideLimit();
         count = 0;
         
+        return 0;
     } // end calculateRideTime()
+    
+     /**
+     * Saves most up to date waiting time to the rides database for users to view.
+     * Will save the return value from calculateRideTime function.
+     */  
+    public void saveRideTime(){       
+    }
+    
+    /**
+     * Saves most up to date waiting time to the rides database for users to view.
+     * Will save the return value from calculateRestaurantTime function.
+     */ 
+    public void saveRestaurantTime(){
+    
+    }
 
 }  // end class QuickServiceRestaurant
 

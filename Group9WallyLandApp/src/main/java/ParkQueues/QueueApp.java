@@ -6,20 +6,21 @@
 package ParkQueues;
 
 /**
- * UI to update restaurant and ride waiting times.
+ *
  * @author jessi
  */
 public class QueueApp {
-    
-    static private UpdateQueueUI updateQueueUI;
-    
-     /**
-     * Makes the UpdateQueueUI visible. 
+     static private QueueUI QueueUI;
+    /**
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // TODO code application logic here
+           
         
-        updateQueueUI = new UpdateQueueUI();
-        updateQueueUI.setVisible(true);
+        QueueUI = new QueueUI();
+        QueueUI.setVisible(true);
     } 
+}
     
-}  
+

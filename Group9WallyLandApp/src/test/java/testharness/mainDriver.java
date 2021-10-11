@@ -69,5 +69,20 @@ private static final LocalDate LocalDate = null;
 		validateFuncToImplement(credentialsList);
 		// if valid, update view and continue
 	}
+        
+        @Test
+        public void testRideWaitTimeCalculation(){   
+        int expected = 0;
+        int actual = calculateRideTime(2);
+        assertEquals(expected, actual);
+        }
+    
+        @Test
+        public void testRestaWaitTimeCalculation(){   
+        int expected = 0;
+        int actual = calculateRideTime(2);
+        assertEquals(expected, actual);
+        }
+        
 
 }
