@@ -57,4 +57,17 @@ private static final LocalDate LocalDate = null;
 
         }
 }
+	@Test
+	public void getCredentialsTest(){
+		// todo: get credentials from user input
+		String username = "to be";
+		String password = "implemented";
+		ArrayList<String> credentialsList = new ArrayList<>();
+		credentialsList.add(username);
+		credentialsList.add(password);
+		// function to authenticate user input
+		validateFuncToImplement(credentialsList);
+		// if valid, update view and continue
+	}
+
 }
