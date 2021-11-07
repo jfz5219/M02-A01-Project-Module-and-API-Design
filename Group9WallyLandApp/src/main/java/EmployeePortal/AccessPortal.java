@@ -2,6 +2,7 @@ package EmployeePortal;
 
 /**
  * Method to reflect and update user view
+ *
  * @author Justin
  */
 public class AccessPortal {
@@ -12,12 +13,17 @@ public class AccessPortal {
     * @param username stores input credential
     * @param validated boolean stores status of 
      */
-    public void viewAccess(String username) {
+    public void viewAccess(Boolean validated) {
         /*
         * TODO: 
         * check validation 
         * update view 
-        */
-        this.user = username;
+         */
+        if (validated) {
+            // TODO update view
+            //System.out.println("update view");
+        } else {
+            // TODO
+        }
     }
 }
