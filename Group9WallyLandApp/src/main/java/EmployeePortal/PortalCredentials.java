@@ -1,5 +1,13 @@
 package EmployeePortal;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  * Method to access employee login
  *
@@ -8,13 +16,15 @@ package EmployeePortal;
 public class PortalCredentials {
 
     private Boolean validated;
-
+    
     /*
     * @param username stores input credential
     * @param password stores input password in String
     * @param validated boolean stores status of 
      */
     public boolean checkCredentials(String username, String password) {
+        
+        
         /*
         TODO: 
         Validate credentials on submit
@@ -26,6 +36,33 @@ public class PortalCredentials {
         // update view on validation
         if (username.equals(validUser) && password.equals(validPass)) {
             validated = true;
+            
+            JPanel accountPanel = new JPanel(new GridLayout(5,1));
+            JButton attractionsButton = new JButton("Attractions");
+            JButton ridesButton = new JButton("Rides");
+            JButton helpButton = new JButton("Help");
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.add(attractionsButton);
+            buttonPanel.add(ridesButton);
+            buttonPanel.add(helpButton);
+        JFrame accountFrame = new JFrame();
+        JTextField uNameField = new JTextField();
+        uNameField.setPreferredSize(new Dimension(100,100));
+        JTextField accountStatusField = new JTextField();
+        accountStatusField.setPreferredSize(new Dimension(100,100));
+        accountFrame.add(uNameField);
+      //  accountFrame.add(accountStatusField);
+        uNameField.setText("Admin");
+        accountStatusField.setText("Employee");
+        accountFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        accountFrame.setLocationRelativeTo(null);
+        accountFrame.setPreferredSize(new Dimension(400,300));
+        accountFrame.pack();
+        accountFrame.add(accountPanel);
+        accountFrame.add(buttonPanel);
+        accountFrame.setVisible(true);
+           
+            
             System.out.println("Authentication successful");
         } else {
             System.out.println("Invalid credentials");
