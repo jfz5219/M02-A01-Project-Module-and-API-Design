@@ -17,9 +17,9 @@ public class QueueApp {
     public static void main(String[] args) {
         // TODO code application logic here
            
-        javax.swing.SwingUtilities.invokeLater(() -> {
-        QueueCntl cntl = new QueueCntl();
-        });
+        
+        QueueUI = new QueueUI();
+        QueueUI.setVisible(true);
     } 
 }
     

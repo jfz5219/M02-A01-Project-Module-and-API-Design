@@ -57,18 +57,32 @@ private static final LocalDate LocalDate = null;
 
         }
 }
-}
-
-    @Test
-    public void testRideWaitTimeCalculation(){   
+	@Test
+	public void getCredentialsTest(){
+		// todo: get credentials from user input
+		String username = "to be";
+		String password = "implemented";
+		ArrayList<String> credentialsList = new ArrayList<>();
+		credentialsList.add(username);
+		credentialsList.add(password);
+		// function to authenticate user input
+		validateFuncToImplement(credentialsList);
+		// if valid, update view and continue
+	}
+        
+        @Test
+        public void testRideWaitTimeCalculation(){   
         int expected = 0;
         int actual = calculateRideTime(2);
         assertEquals(expected, actual);
-    }
+        }
     
-    @Test
-    public void testRestaWaitTimeCalculation(){   
+        @Test
+        public void testRestaWaitTimeCalculation(){   
         int expected = 0;
         int actual = calculateRideTime(2);
         assertEquals(expected, actual);
-    }
+        }
+        
+
+}
