@@ -1,23 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package EmployeePortal;
 
 /**
- * Method to reflect and update user view
- * @author Justin
+ *
+ * @author Evan
  */
 public class AccessPortal {
-
-    private String user;
-
-    /*
-    * @param username stores input credential
-    * @param validated boolean stores status of 
-     */
-    public void viewAccess(String username) {
-        /*
-        * TODO: 
-        * check validation 
-        * update view 
-        */
-        this.user = username;
-    }
+    
 }

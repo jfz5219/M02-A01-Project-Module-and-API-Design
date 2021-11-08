@@ -1,0 +1,8 @@
+ride, Ride1, very busy, 50, Quadrant 1
+ride, Ride2, not busy, 0, Quadrant 2
+ride, Ride3, busy, 20, Quadrant 3
+ride, Ride4, a little busy, 5, Quadrant 4
+restaurant, Rest1, very busy, 40, Quadrant 1
+restaurant, Rest2, not busy, 0, Quadrant 2
+restaurant, Rest3, busy, 30, Quadrant 3
+restaurant, Rest4, a little busy, 3, Quadrant 4

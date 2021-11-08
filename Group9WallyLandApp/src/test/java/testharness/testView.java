@@ -1,17 +1,14 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package testharness;
-package LocationServices;
 
-import java.util.Comparator;
-import org.junit.Test;
-
-
-
-
-
-public class testView  {
-    
-    
-    
+/**
+ *
+ * @author Evan
+ */
+public class testView {
     
 }
