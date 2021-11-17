@@ -8,13 +8,14 @@ package EmployeePortal;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 
+
 /**
  * TODO: dialog popup instead of form
  *
  * @author Justin
  */
 public class EmployeePortalUI extends javax.swing.JFrame {
-
+    private UpdateQueueUI view;
     private boolean running = true;
 
     /**
@@ -127,6 +128,9 @@ public class EmployeePortalUI extends javax.swing.JFrame {
 
             // closes current window
             formWindowClosed(evt);
+            UpdateQueueCntl cntl = new UpdateQueueCntl();
+            view = new UpdateQueueUI(cntl);
+            view.setVisible(true);
         } else {
             // show message for invalid credentials
             Component frame = null;

@@ -1,0 +1,8 @@
+ride, Ride 1, 0, Quadrant 1
+ride, Ride 2, 0, Quadrant 2
+ride, Ride 3, 20, Quadrant 3
+ride, Ride 4, 5, Quadrant 4
+restaurant, Rest 1, 40, Quadrant 1
+restaurant, Rest 2, 0, Quadrant 2
+restaurant, Rest 3, 30, Quadrant 3
+restaurant, Rest 4, 3, Quadrant 4
