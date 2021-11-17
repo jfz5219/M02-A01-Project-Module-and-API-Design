@@ -1,6 +1,7 @@
 package LocationServices;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class FindLocation {
     
@@ -51,6 +52,8 @@ public class FindLocation {
     
     
     public static void main(String[] args) {
-        
+        SwingUtilities.invokeLater(() -> { 
+            locationCntl cntl = new locationCntl(); // Instantiating the controller is neccesary 
+        });
     }
 }
