@@ -5,7 +5,6 @@
  */
 package EmployeePortal;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -28,15 +27,16 @@ public class UpdateQueueCntl {
     }
     
     // gets updated waiting time of list
-    public void update(String name, float enter, float leave) throws IOException {    
-            model.updateData(name, enter, leave);
+    public List<String[]> getUpdate(String name, float enter, float leave) {    
+        
+        return model.updatedList(name, enter, leave);
     }
     
     /**
      * Gets current list of ride and restaurants
      */ 
-    public List<String[]> getList() {       
-        return model.retrieveList();
+    public List<String[]> getCurrent() {       
+        return model.getCurrentList();
     }
     
 

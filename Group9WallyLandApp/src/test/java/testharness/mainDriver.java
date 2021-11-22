@@ -1,11 +1,11 @@
 package testharness;
-import EmployeePortal.UpdateQueueModel;
-import java.io.IOException;
+package EmployeePortal;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Comparator;
 import main.java.RealTimeInfo.ParkEvent;
-import static org.junit.Assert.assertEquals;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class mainDriver {
@@ -66,16 +66,21 @@ private static final LocalDate LocalDate = null;
 		credentialsList.add(username);
 		credentialsList.add(password);
 		// function to authenticate user input
-//		validateFuncToImplement(credentialsList);
+		validateFuncToImplement(credentialsList);
 		// if valid, update view and continue
 	}
         
         @Test
-        public void updateDataTest() throws IOException{   
-        String expected = "Update Sucessful";
-        float enterNum = (float) 6.0;
-        float exitNum = (float) 7.5;
-        String actual = UpdateQueueModel.updateData("Ride 1", enterNum, exitNum);
+        public void testRideWaitTimeCalculation(){   
+        int expected = 0;
+        int actual = calculateRideTime(2);
+        assertEquals(expected, actual);
+        }
+    
+        @Test
+        public void testRestaWaitTimeCalculation(){   
+        int expected = 0;
+        int actual = calculateRideTime(2);
         assertEquals(expected, actual);
         }
         

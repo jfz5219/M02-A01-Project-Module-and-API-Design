@@ -5,11 +5,7 @@
  */
 package EmployeePortal;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,86 +14,36 @@ import javax.swing.JOptionPane;
 public class UpdateQueueUI extends javax.swing.JFrame {
     
     private final UpdateQueueCntl cntl;
-    private InitialPortalUI view;
+    private int waitingTime;
     /**
      * Creates new form QueueUI
-     *
      * @param updateCntl
      */
-    public UpdateQueueUI(UpdateQueueCntl updateCntl) {
-        view = new InitialPortalUI();
+
+    public UpdateQueueUI(UpdateQueueCntl updateCntl){
         cntl = updateCntl;
         initComponents();
         
     }
     
-    public boolean checkInput() {
-        
-        String enterN = enter.getText();
-        String leaveN = leave.getText();
+    // Set status of ride or restaurant based on waiting time.
+    public void getStatus(int time) {   
 
-        //Error for blank inputs
-        if (enterN.isEmpty() || leaveN.isEmpty() || enterN.trim().length() == 0 || leaveN.trim().length() == 0) {
-            JOptionPane.showMessageDialog(null,
-                    "Make sure both inputs are filled",
-                    "Error",
-                    JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-
-        //Error for non-numbered inputs.
-        try {
-            Integer.parseInt(enterN);
-            Integer.parseInt(leaveN);
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null,
-                    "Make sure the inputs are a valid whole number!",
-                    "Error",
-                    JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-
-        //Inputs can't be less than 0.
-        if (Integer.parseInt(enterN) < 0 || Integer.parseInt(leaveN) < 0) {
-            JOptionPane.showMessageDialog(null,
-                    "Make sure both inputs are greater than or equal to 0",
-                    "Error",
-                    JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-
-        //Inputs can't be greater than 500.
-        if (Integer.parseInt(enterN) > 500 || Integer.parseInt(leaveN) > 500) {
-            JOptionPane.showMessageDialog(null,
-                    "Inputs can't be greater than 500",
-                    "Error",
-                    JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        
-        //Inputs can't have unrealistic entering and leaving rates.
-        if (Integer.parseInt(enterN) / Integer.parseInt(leaveN) >= 50 || (float)(Integer.parseInt(leaveN) / Integer.parseInt(enterN)) >= 50) {
-            JOptionPane.showMessageDialog(null,
-                    "The ratio of customers entering and leaving can't be greater than 1:50, vice versa.",
-                    "Error",
-                    JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        return true;
-    }
-    
-    public void displayInfo() {
-        
-        String title = changePlace.getSelectedItem().toString();
-        List<String[]> list = cntl.getList();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i)[1].equals(title)) {
-                System.out.println(list.get(i)[2]);
-                waitTime.setText(list.get(i)[2] + " minutes");
-                status.setText(list.get(i)[3]);
+            if(time > 50){
+                status.setText("Very busy");
+                
+            } else if (time > 30){
+                status.setText("Busy");
+                
+            } else if (time > 10){
+                status.setText("A little busy");
+                
+            } else {
+                status.setText("Not Busy");
             }
-        }
-    }
+            
+            }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -122,10 +68,9 @@ public class UpdateQueueUI extends javax.swing.JFrame {
         jTabbedPane6 = new javax.swing.JTabbedPane();
         jTabbedPane8 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jTabbedPane9 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        changePlace = new javax.swing.JComboBox<>();
+        name = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         label = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -138,11 +83,6 @@ public class UpdateQueueUI extends javax.swing.JFrame {
         status = new javax.swing.JLabel();
         waitTime = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        reset = new javax.swing.JButton();
-        logout = new javax.swing.JButton();
 
         jLabel1.setText("Update Park Statistics");
 
@@ -160,13 +100,6 @@ public class UpdateQueueUI extends javax.swing.JFrame {
             .addGap(0, 327, Short.MAX_VALUE)
         );
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,10 +108,10 @@ public class UpdateQueueUI extends javax.swing.JFrame {
             }
         });
 
-        changePlace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ride 1", "Ride 2", "Ride 3", "Ride 4", "Rest 1", "Rest 2", "Rest 3", "Rest 4", " " }));
-        changePlace.addActionListener(new java.awt.event.ActionListener() {
+        name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ride 1", "Ride 2", "Ride 3", "Ride 4", "Rest 1", "Rest 2", "Rest 3", "Rest 4", " " }));
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changePlaceActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
 
@@ -188,7 +121,7 @@ public class UpdateQueueUI extends javax.swing.JFrame {
 
         jLabel4.setText("Waiting Time:");
 
-        jLabel5.setText("__________________________________________________________________________________________");
+        jLabel5.setText("________________________________________________________");
 
         jLabel6.setText("Customers Entering:");
 
@@ -209,62 +142,23 @@ public class UpdateQueueUI extends javax.swing.JFrame {
 
         status.setText("None");
 
-        waitTime.setText("None");
-        displayInfo();
+        waitTime.setText("0");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Update Ride and Restaurant Queues");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Update the Waiting Time When Busy");
-
-        jLabel9.setText("* Enter the number of customers entering and leaving every 15 minutes. ");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Information");
-
-        reset.setText("Reset Info");
-        reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetActionPerformed(evt);
-            }
-        });
-
-        logout.setText("Log Out");
-        logout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(label, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(jLabel3))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(waitTime, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(reset)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(changePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel6)
@@ -272,33 +166,35 @@ public class UpdateQueueUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(enter, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(leave, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(logout))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addComponent(jLabel5))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                                    .addComponent(leave, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(126, 126, 126)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(waitTime, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(name, 0, 148, Short.MAX_VALUE)
+                                    .addComponent(status, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(253, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logout))
-                .addGap(46, 46, 46)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(changePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -309,14 +205,8 @@ public class UpdateQueueUI extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(waitTime))
                 .addGap(18, 18, 18)
-                .addComponent(reset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addGap(28, 28, 28)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(enter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -324,9 +214,9 @@ public class UpdateQueueUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(leave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,68 +254,40 @@ public class UpdateQueueUI extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
+        String title = name.getSelectedItem().toString();
+        float enterNum = Float.parseFloat(enter.getText());
+        float leaveNum = Float.parseFloat(leave.getText());
 
-        //Checks if inputs are valid
-        if (checkInput()) {
-            
-            String title = changePlace.getSelectedItem().toString();
-            float enterNum = Integer.parseInt(enter.getText());
-            float leaveNum = Integer.parseInt(leave.getText());
+        List<String[]> updatedlist = cntl.getUpdate(title, enterNum, leaveNum);
 
-            //Updates data file
-            try {
-                cntl.update(title, enterNum, leaveNum);
-            } catch (IOException ex) {
-                Logger.getLogger(UpdateQueueUI.class.getName()).log(Level.SEVERE, null, ex);
+        // Updates waiting time
+        for (int i = 0; i < updatedlist.size(); i++) {
+            if(updatedlist.get(i)[1].equals(title)){
+                waitTime.setText(updatedlist.get(i)[2] + " minutes");
+
+                getStatus(Integer.parseInt(updatedlist.get(i)[2]));
+
             }
 
-            //Displays updated data
-            List<String[]> list = cntl.getList();
-            // Updates waiting time
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i)[1].equals(title)) {
-
-                    // This sets the wait time text
-                    waitTime.setText(list.get(i)[2] + " minutes");
-
-                    //Sets status
-                    status.setText(list.get(i)[3]);
-                    
-                }
-
-                //
-            }
+            //
         }
     }//GEN-LAST:event_updateActionPerformed
 
-    private void changePlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePlaceActionPerformed
-        enter.setText("");
-        leave.setText("");
-        displayInfo();
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
 
-    }//GEN-LAST:event_changePlaceActionPerformed
+        String title = name.getSelectedItem().toString();
+        List<String[]> currentlist = cntl.getCurrent();
+            for (int i = 0; i < currentlist.size(); i++) {
+            if(currentlist.get(i)[1].equals(title)){
+                waitTime.setText(currentlist.get(i)[2] + " minutes");
 
-    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        // TODO add your handling code here:
-        String title = changePlace.getSelectedItem().toString();
-        try {
-            cntl.update(title, 0, 0);
-        } catch (IOException ex) {
-            Logger.getLogger(UpdateQueueUI.class.getName()).log(Level.SEVERE, null, ex);
+                getStatus(Integer.parseInt(currentlist.get(i)[2]));
+
+            }
+
+            //
         }
-        displayInfo();
-    }//GEN-LAST:event_resetActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
-        //Park staff will be taken to inital portal screen.
-        setVisible(false);
-        view.setVisible(true);
-    }//GEN-LAST:event_logoutActionPerformed
+    }//GEN-LAST:event_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,7 +319,7 @@ public class UpdateQueueUI extends javax.swing.JFrame {
         javax.swing.SwingUtilities.invokeLater(() -> {
             UpdateQueueCntl cntl = new UpdateQueueCntl();
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -465,20 +327,15 @@ public class UpdateQueueUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JComboBox<String> changePlace;
     private javax.swing.JTextField enter;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -492,8 +349,7 @@ public class UpdateQueueUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane9;
     private javax.swing.JLabel label;
     private javax.swing.JTextField leave;
-    private javax.swing.JButton logout;
-    private javax.swing.JButton reset;
+    private javax.swing.JComboBox<String> name;
     private javax.swing.JLabel status;
     private javax.swing.JLabel waitTime;
     // End of variables declaration//GEN-END:variables
