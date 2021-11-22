@@ -36,3 +36,17 @@ Example (Try):
 The waiting time calculated in this page will be used by other use cases. For example, it will show up in
 customer side of the application (ParkStatistics and ParkQueue).
 
+3.) Visitor Login Use Case 
+
+Evan Kennedy - Group 9 
+
+AFter loggin in the user will be prompted with two options for long, one for park visitors and one for park employees. 
+When a park visitor enters the correct credentials they are sent to a visitor login screen. 
+After loggin in the user sees a display with basic user information displayed on a user interace. 
+
+Click on Visitor Login and Type: 
+username: visiotr 
+password: password 
+
+use Case offers basic user interface upon logging so the user can view their account information. 
+
