@@ -117,10 +117,11 @@ public class EmployeePortalUI extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        AccessPortal portal = new AccessPortal();
+//        AccessPortal portal = new AccessPortal();
         PortalCredentials credentials = new PortalCredentials();
+       
         boolean validated = credentials.checkCredentials(usernameField.getText(), passwordField.getText());
-        portal.viewAccess(validated);
+//        portal.viewAccess(validated);
         // close login and navigate to use case
         if (validated) {
             // TODO open UI use case one here
@@ -128,6 +129,7 @@ public class EmployeePortalUI extends javax.swing.JFrame {
 
             // closes current window
             formWindowClosed(evt);
+
             UpdateQueueCntl cntl = new UpdateQueueCntl();
             view = new UpdateQueueUI(cntl);
             view.setVisible(true);
