@@ -12,7 +12,6 @@ package EmployeePortal;
 public class InitialPortalUI extends javax.swing.JFrame {
 
     private boolean running = true;
-
     /**
      * Creates new form InitialPortalUI
      */

@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 public class VisitorPortalUI extends javax.swing.JFrame {
 private UpdateQueueUI view;
     private boolean running = true;
-    private Object usernameField;
-    private Object passwordField;
+//    private Object usernameField;
+//    private Object passwordField;
     /**
      * Creates new form VisitorPortalUI
      */
