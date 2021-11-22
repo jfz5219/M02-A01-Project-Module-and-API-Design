@@ -23,11 +23,15 @@ After logging in, you will be taken to the Updating Queue Page. This use case us
 park staff member enters to calculate the waiting time. These two variables will be number of people eneter or leaving the ride/restaurant.
 These two variables should update every hour. 
 
-Example (Try): 
-6 people enters every hour
-7.5 people leaves every hour
-By entering 6 for customers entering and 7.5 for customers leaving, the average waiting time will be 32 minutes.
+Update:
+-Changes are properly saved to txt file
+-Errors are catched
+-Can reset info
+-Log out from UpdateQueueUI
 
+Example (Try): 
+6 people enters every 15 minutes
+7 people leaves every 15 minutes
 
 The waiting time calculated in this page will be used by other use cases. For example, it will show up in
 customer side of the application (ParkStatistics and ParkQueue).
