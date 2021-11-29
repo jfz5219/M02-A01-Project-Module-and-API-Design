@@ -1,3 +1,7 @@
+//Does this need a main driver 
+//How to instantiate controller/switch use cases from login to location? 
+//4 part grid with images and a actionlistenener on the mouse statefulness??? (Hover, click) 
+// No need to ask user location simply select section of the map and view information on each relevant location 
 package LocationServices;
 
 import javax.swing.JFrame;
