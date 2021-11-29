@@ -95,6 +95,9 @@ public class PortalCredentials {
         textFieldPanel.add(uNameField);
         textFieldPanel.add(accountStatusField);
         textFieldPanel.setPreferredSize(new Dimension(400,300));
+        //create buttons to change use cases 
+        //add action listener event for map grid
+        //
         uNameField.setText("Visitor UName");
         accountStatusField.setText("Visitor");
         accountFrame.add(textFieldPanel);

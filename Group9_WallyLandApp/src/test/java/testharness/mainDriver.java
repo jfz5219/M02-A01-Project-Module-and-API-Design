@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
-import main.java.RealTimeInfo.ParkEvent;
+import ParkStatistics.ParkEvent;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 

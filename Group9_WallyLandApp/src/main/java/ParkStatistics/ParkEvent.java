@@ -1,4 +1,4 @@
-package main.java.RealTimeInfo;
+package ParkStatistics;
 
 import java.time.LocalDate;
 import java.time.Month;
