@@ -97,7 +97,10 @@ public class PortalCredentials {
         textFieldPanel.setPreferredSize(new Dimension(400,300));
         //create buttons to change use cases 
         //add action listener event for map grid
-        //
+        //Find out how to switch from the login cases to the location/statistics case 
+        //Should it be a grid with 4 different images with actionlisteners to determine mouse statefulness?? 
+        //Once the relevant section of the map is clicked it should show some basic info about the attraction
+        //Biggest thing is having a menu that lets you switch use cases 
         uNameField.setText("Visitor UName");
         accountStatusField.setText("Visitor");
         accountFrame.add(textFieldPanel);
