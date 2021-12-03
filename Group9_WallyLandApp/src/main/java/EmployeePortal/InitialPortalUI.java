@@ -7,7 +7,7 @@ package EmployeePortal;
 
 /**
  *
- * @author Justi
+ * @author Justin
  */
 public class InitialPortalUI extends javax.swing.JFrame {
 
