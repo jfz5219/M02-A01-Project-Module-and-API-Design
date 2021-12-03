@@ -102,6 +102,7 @@ public class PortalCredentials {
         //Once the relevant section of the map is clicked it should show some basic info about the attraction
         //Biggest thing is having a menu that lets you switch use cases 
         //ASK THE PROF!!!!!!!
+        //Make this panel that appear to be a navigational panel!!!! 
         uNameField.setText("Visitor UName");
         accountStatusField.setText("Visitor");
         accountFrame.add(textFieldPanel);
