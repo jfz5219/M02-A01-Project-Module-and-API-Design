@@ -17,26 +17,8 @@ public class FindLocation {
      * @param latitude: stores user Latitude in type double 
      * @return returns string location, translated from longitude and latitude coordinates
      */
-    public String getLocation(double Longitude, double latitude) {
-        String location = "Longitude + Latitude"; 
-        
-       if (Longitude > 15) {
-           location = "WallyLand section 1";
-       } else if (latitude < 10) {
-           location = "WallyLand section 2";
-       } else {
-           location = "not currently in park";
-       }
-        /*
-        TODO: 
-        Implement geo-coordinates transaltion 
-        */
-        
-        return location;
-        
-    }
-    
-    
+   
+     
     /**
      * This method uses a JFrame to display user location and nearby attractions on a map
      * @param attractionNames: Nearby Attraction Names displayed on map  
@@ -44,17 +26,10 @@ public class FindLocation {
      * @return Returns JFrame mapFrame to display user location on Map 
      */
     public JFrame showLocation(String attractionNames, String currentLocation){
-        JFrame mapFrame = new JFrame();
-       /*
-        TODO: 
-        Implement applying elements to map frame. 
-        */
-       
-        
+        JFrame mapFrame = new JFrame();  
         return mapFrame;
     }
-    
-    
+   
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> { 
             locationCntl cntl = new locationCntl(); // Instantiating the controller is neccesary 
